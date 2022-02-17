@@ -1,4 +1,5 @@
-const { deployments } = require("hardhat");
+const { deployments, ethers } = require("hardhat");
+const fs = require("fs");
 
 module.exports = async({
     getNamedAccounts,
@@ -14,4 +15,9 @@ module.exports = async({
         from: deployer,
         log: true
     })
+    log(`You have deployed an NFT contract to ${SVGNFT.address}`)
+    let filepath = './img/circle.svg'
+    let svg = fs.readFileSync(filepath, {encoding: "utf8"})
+
+    const svgNFTContract = await ethers.getContractFactory("SVGNFT")
 }
